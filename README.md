@@ -62,17 +62,17 @@ Symbol	        Description
 
 1. Start Services
 
-  .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+  ```.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties```
 
-  .\bin\windows\kafka-server-start.bat .\config\server.properties
+  ```.\bin\windows\kafka-server-start.bat .\config\server.properties```
 
 2. Submit Spark Streaming Job
 
-  spark-submit --jars C:\spark-2.2.1-bin-hadoop2.7\jars\spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar streaming.py
+  ```spark-submit --jars C:\spark-2.2.1-bin-hadoop2.7\jars\spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar streaming.py```
 
 3. Run Producer.py file
 
-  python C:\Python27\Producer.py -i C:\Python27\Sample_Log_all.txt
+  ```python C:\Python27\Producer.py -i C:\Python27\Sample_Log_all.txt```
   
 
 
