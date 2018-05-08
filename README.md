@@ -15,8 +15,26 @@ Link: https://www.python.org/ftp/python/2.7.15/
 
 Link: https://spark.apache.org/downloads.html
 
+### Installation 
+
+```Download Kafka and edit below two properties``` 
+
+server.properties	----------> log.dirs=C:\kafka_2.11-1.0.0\kafka-logs
+
+zookeeper.properties    ----------> dataDir=C:\kafka_2.11-1.0.0\data
+
+```Download Python and install kafka```
+
+pip install kafka
+
+```Download Spark and download JAR: spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar```
+
+Include the Jar in C:\spark-2.2.1-bin-hadoop2.7\jars\
+
+
+
 ###  Apache Log Format
-84.56.41.58 - - [18/Apr/2016:06:52:07 +0100] "GET /wordpress/wp-admin/ HTTP/1.1" 200 12349 "http://www.example.com/wordpress/wp-login.php" "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0"
+```84.56.41.58 - - [18/Apr/2016:06:52:07 +0100] "GET /wordpress/wp-admin/ HTTP/1.1" 200 12349 "http://www.example.com/wordpress/wp-login.php" "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0"```
 
 LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i""
 
@@ -40,13 +58,24 @@ Symbol	        Description
 
 %{User-agent}i	        The Client’s browser
 
-# Installation 
+### Steps
 
-Download Kafka and edit below two properties 
+1. Start Services
 
-server.properties	----------> log.dirs=C:\kafka_2.11-1.0.0\kafka-logs
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
-zookeeper.properties    ----------> dataDir=C:\kafka_2.11-1.0.0\data
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+2. Submit Spark Streaming Job
+
+spark-submit --jars C:\spark-2.2.1-bin-hadoop2.7\jars\spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar streaming.py
+
+3. Run Producer.py file
+
+python C:\Python27\Producer.py -i C:\Python27\Sample_Log_all.txt
+
+
+
 
 
 
