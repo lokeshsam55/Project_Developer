@@ -69,6 +69,10 @@ Symbol	        Description
 2. Submit Spark Streaming Job
 
   ```spark-submit --jars C:\spark-2.2.1-bin-hadoop2.7\jars\spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar streaming.py```
+  
+  If you are getting "```FileBasedWriteAheadLog_ReceivedBlockTracker: Stopped write ahead log manager```" after 1st checkpoint error use the below script
+  
+  ```spark-submit --master local[*] --deploy-mode client --jars C:\spark-2.2.1-bin-hadoop2.7\jars\spark-streaming-kafka-0-8-assembly_2.11-2.3.0.jar Streaming_data.py```
 
 3. Run Producer.py file
 
